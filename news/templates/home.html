@@ -18,7 +18,9 @@ Página Inicial
             <div class="news-card">
                 <h2 class="news-title">{{ news.title }}</h2>
                 <span class="news-date">{{ news.created_at|date:"d/m/Y" }}</span>
-                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                {% if news.image %}
+                    <img src="{% static news.image.url %}" alt="{{ news.title }}">
+                {% endif %}
             </div>
             {% endfor %}
         </div>

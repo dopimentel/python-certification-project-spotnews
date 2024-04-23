@@ -23,6 +23,10 @@ class User(models.Model):
 
 
 class News(models.Model):
+
+    class Meta:
+        verbose_name_plural = "news list"
+
     title = models.CharField(max_length=200, validators=[Validate.two_words])
     content = models.TextField()
     author = models.ForeignKey(
