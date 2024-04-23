@@ -5,6 +5,10 @@
 Página Inicial
 {% endblock %}
 
+{% block header_links %}
+    <li><a href="{% url 'categories-form' %}">Nova Categoria</a></li>
+{% endblock %}
+
 {% block content %}
 <main>
     <div class="news-cards">
