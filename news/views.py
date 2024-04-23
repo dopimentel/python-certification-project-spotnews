@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from news.forms import CreateCategoryForm
+from news.forms import CreateCategoryModelForm
 from news.models import Category, News
 
 
@@ -15,9 +15,9 @@ def news_details(request, id):
 
 
 def categories(request):
-    form = CreateCategoryForm()
+    form = CreateCategoryModelForm()
     if request.method == "POST":
-        form = CreateCategoryForm(request.POST)
+        form = CreateCategoryModelForm(request.POST)
         if form.is_valid():
             # form.save()
             Category.objects.create(**form.cleaned_data)

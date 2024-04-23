@@ -12,8 +12,7 @@ Formulário para Nova Categoria
 <main>
     <form method="post" action="{% url 'categories-form' %}">
         {% csrf_token %}
-        <label for="id_name">Nome:</label>
-        {{ form.name }}
+        {{ form.as_p }}
         <button type="submit">Salvar</button>
     </form>
 </main>
