@@ -1,12 +1,23 @@
 from django.urls import path, include
-from news.views import home, news_details, categories, news, UserViewSet
+from news.views import (
+    home,
+    news_details,
+    categories,
+    news,
+    CategoryViewSet,
+    UserViewSet,
+    NewsViewSet,
+)
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'users', UserViewSet)
+
+router.register(r"categories", CategoryViewSet)
+router.register(r"users", UserViewSet)
+router.register(r"news", NewsViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]
 
 urlpatterns = [
@@ -14,6 +25,5 @@ urlpatterns = [
     path("news/<int:id>/", news_details, name="news-details-page"),
     path("categories/", categories, name="categories-form"),
     path("news/", news, name="news-form"),
-    path('api/', include(router.urls)),
-
+    path("api/", include(router.urls)),
 ]
