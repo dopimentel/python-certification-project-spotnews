@@ -17,10 +17,6 @@ router.register(r"users", UserViewSet)
 router.register(r"news", NewsViewSet)
 
 urlpatterns = [
-    path("", include(router.urls)),
-]
-
-urlpatterns = [
     path("", home, name="home-page"),
     path("news/<int:id>/", news_details, name="news-details-page"),
     path("categories/", categories, name="categories-form"),
