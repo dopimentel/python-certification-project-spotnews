@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 from news.models import Category, News
 from django.utils.translation import gettext_lazy as _
@@ -8,28 +9,11 @@ class CreateCategoryModelForm(forms.ModelForm):
         model = Category
         fields = ["name"]
         labels = {"name": _("Nome")}
-        # help_texts = {
-        #     'name': 'Enter the name of the category'
-        # }
-        # error_messages = {
-        #     'name': {
-        #         'required': 'The name field is required'
-        #     }
-        # }
-        # widgets = {"name": forms.TextInput(attrs={"for": "id_name"})}
 
 
 class CreateNewsModelForm(forms.ModelForm):
     class Meta:
         model = News
-        # fields = [
-        #     "title",
-        #     "content",
-        #     "author",
-        #     "created_at",
-        #     "image",
-        #     "categories",
-        # ]
         fields = "__all__"
         labels = {
             "title": _("Título"),
@@ -40,8 +24,8 @@ class CreateNewsModelForm(forms.ModelForm):
             "categories": _("Categorias"),
         }
         widgets = {
-            "created_at": forms.DateInput(attrs={"type": "date"}),
+            "created_at": forms.DateInput(
+                attrs={"type": "date", "value": datetime.date.today()}
+            ),
             "categories": forms.CheckboxSelectMultiple(),
-            "image": forms.FileInput(),
-
         }

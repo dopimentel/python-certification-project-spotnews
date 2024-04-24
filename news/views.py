@@ -28,7 +28,7 @@ def categories(request):
 def news(request):
     form = CreateNewsModelForm()
     if request.method == "POST":
-        form = CreateNewsModelForm(request.POST)
+        form = CreateNewsModelForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             print("entrou aqui")
